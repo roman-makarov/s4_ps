@@ -1,3 +1,4 @@
+# test push
 class ApplicationController < ActionController::Base
 
   before_filter :authenticate
