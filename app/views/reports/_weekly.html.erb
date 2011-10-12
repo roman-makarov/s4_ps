@@ -1,0 +1,24 @@
+<table class="resource" data-context-target="weekly" style="display: none;">
+    <thead>
+        <tr>
+            <td>&nbsp;</td>
+            <%- @weekly_reports.each do |r| -%>
+                <td class="icon">
+                    <%= l r.date, :format => :weekly %>
+                </td>
+            <%- end -%>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="odd">
+            <td class="string">
+                <%= h @weekly_reports.first.scheme %>
+            </td>
+            <%- @weekly_reports.each do |r| -%>
+                <td class="string status_<%= r.status %>" data-state="<%= r.status %>">
+                    &nbsp;
+                </td>
+            <%- end -%>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,20 @@
+<h1>
+    <%= @organization.full_name %>
+</h1>
+
+<%- document_types = @documents.collect(&:document).uniq -%>
+
+<%- document_types.each do |document_type| -%>
+    <div class="list_item">
+        <h4>
+            <%= h document_type %>
+        </h4>
+        <ul>
+            <%- @documents.select { |document| document.document == document_type }.each do |document| -%>
+                <li>
+                    <%= h(document.title).gsub("\r\n", "\n").gsub("\n", "<br />") %>
+                </li>
+            <%- end -%>
+        </ul>
+    </div>
+<%- end -%>

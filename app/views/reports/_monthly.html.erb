@@ -1,0 +1,29 @@
+<table class="resource" data-context-target="monthly" style="display: none;">
+    <thead>
+        <tr>
+            <td>&nbsp;</td>
+            <%- @monthly_reports.each do |r| -%>
+                <td class="icon">
+                    <%= t ".at" %>
+                    1
+                    <%= l(r.date, :format => :monthly).mb_chars.downcase %>
+                </td>
+            <%- end -%>
+        </tr>
+    </thead>
+    <tbody>
+        <%- @monthly_reports.first.scheme.each_with_index do |s, i| -%>
+            <tr class="<%= cycle("odd", "even") %>">
+                <td>
+                    <%= h s %>
+                </td>
+                <%- @monthly_reports.each do |r| -%>
+                    <td class="icon status_<%= r.states[i] %>" data-state="<%= r.states[i] %>">
+                        &nbsp;
+                    </td>
+                <%- end -%>
+            </tr>
+        <%- end -%>
+    </tbody>
+</table>
+

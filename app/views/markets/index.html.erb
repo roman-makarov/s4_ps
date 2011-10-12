@@ -1,0 +1,7 @@
+<h1>
+    <%= @organization.full_name %>
+</h1>
+
+<%= render "contextual_menu" %>
+
+<%= render :partial => "market", :collection => @organization.markets %>

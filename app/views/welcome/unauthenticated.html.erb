@@ -1,0 +1,7 @@
+<h1>
+    <%= t ".title" %>
+</h1>
+
+<%= textilize t(".common") %>
+
+<%= textilize t(authenticated? ? ".unregistered" : ".unknown") %>

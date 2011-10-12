@@ -1,0 +1,39 @@
+ru:
+  
+  layouts:
+    application:
+      title: 'Личный кабинет'
+  
+  resource_table:
+    cell:
+      blank: 'Отсутствует'
+  
+  shared:
+
+
+    header:
+      title: 'Личный кабинет участника'
+      login: 'Вход'
+      registration: 'Регистрация'
+      logout: 'Выход'
+    
+    menu:
+      organization:   'Организация'
+      organization_licenses: 'Лицензии'
+      organization_management: 'Руководитель, контролер, подписанты'
+      markets:        'Рынки'
+      documents:      'Документы организации'
+      registrations:  'Регистрационные карточки участника'
+      reports:        'Отчетность участника'
+
+    footer:
+      content: |
+        &copy; %{year} ЗАО &laquo;Московская межбанковская валютная биржа&raquo;
+        Телефон: +7 (495) 234-48-11, Факс: +7 (495) 705-96-22
+        "Отправить письмо на ММВБ":http://www.micex.ru
+
+    s4:
+      resource:
+        value:
+          string:
+            blank: 'Отсутствует'

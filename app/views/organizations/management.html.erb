@@ -1,0 +1,30 @@
+<h1>
+    <%= @organization.full_name %>
+</h1>
+
+<%= contextual_menu %>
+
+<div class="resource">
+    <h3>
+        <%= t ".ceo" %>
+    </h3>
+    <div class="group">
+        <%- S4::CEO.schema.each do |element| -%>
+            <%= render :partial => "shared/s4/resource/#{element.element_type}", :object => element, :locals => { :resource => @ceo } %>
+        <%- end -%>
+    </div>
+</div>
+
+<div class="resource">
+    <h3>
+        <%= t ".controllers" %>
+    </h3>
+    <%= resource_table S4::Controller.schema, @controllers %>
+</div>
+
+<div class="resource">
+    <h3>
+        <%= t ".signers" %>
+    </h3>
+    <%= resource_table S4::Signer.schema, @signers %>
+</div>
