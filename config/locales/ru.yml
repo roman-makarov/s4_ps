@@ -1,4 +1,14 @@
 ru:
+  activerecord:
+    errors:
+      template:
+        header: 'Форма заполнена с ошибками'
+        body: 'ошибки'
+      models:
+        senddocument:
+          attributes:
+            document:
+              blank: 'документ обязателене для загрузки'
   shared:
 
     passport_js:  'http://passport-beta.micex.ru/javascripts/passport.js'
