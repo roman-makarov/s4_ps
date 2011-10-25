@@ -1,1 +1,5 @@
 .project
+log/passenger.3000.log
+tmp/pids/passenger.3000.pid
+tmp/pids/passenger.3000.pid.lock
+.gitignore

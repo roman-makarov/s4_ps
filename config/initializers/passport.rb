@@ -1,5 +1,4 @@
 Passport.configure do |passport|
-
   passport.failure  :welcome_controller
   passport.resource :user
   

@@ -3,6 +3,17 @@ require 'htmldoc'
 class AuthorityController < ApplicationController
   @sessionId = nil
   
+  #def authenticated_user
+    #return true
+  #end
+  
+  #def authenticate!
+    #return false
+    #super({:strategies => 'password'})
+    #user, opts = _perform_authentication(*args)
+    #user
+  #end
+  
   def render_to_pdf(options = nil)
     data = render_to_string(options)
     pdf = PDF::HTMLDoc.new
@@ -20,6 +31,7 @@ class AuthorityController < ApplicationController
   end
   
   def index
+    @users = S4::Agent.all({:userId => "76831d27-6daf-44af-bb73-a72875e9a04f"})
     @params = params
     @params.delete('controller')
     @params.delete('action')
