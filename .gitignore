@@ -8,3 +8,8 @@ app/controllers/application_controller.rb
 app/models/passport_model.rb
 config/database.yml
 log/development.log
+*~
+*.cache
+*.log
+*.pid
+
