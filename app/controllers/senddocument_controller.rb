@@ -43,18 +43,21 @@ class SenddocumentController < ApplicationController
   end
   
   def list
+		regex = /\d{2}\.\d{2}\.\d{4}/
+		time_now = Time.now
+
     @by_date_start = params['by_date_start']
     @by_date_finish = params['by_date_finish']
     @by_type = params['by_type']
     @document_name = params['document_name']
     @by_sender = params['by_sender']
 
-    if @by_date_start == '' || @by_date_start.nil?
-            @by_date_start = ''
-    end
-    if @by_date_finish == '' || @by_date_finish.nil?
-            @by_date_finish = ''
-    end
+    if @by_date_start == '' || @by_date_start.nil? || @by_date_start !~ regex
+			@by_date_start = ''
+		end
+		if @by_date_finish == '' || @by_date_finish.nil? || @by_date_finish !~ regex
+			@by_date_finish = ''
+		end
     if @by_type == '' || @by_type.nil?
             @by_type = '15'
     end
