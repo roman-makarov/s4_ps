@@ -3,3 +3,8 @@ log/passenger.3000.log
 tmp/pids/passenger.3000.pid
 tmp/pids/passenger.3000.pid.lock
 .gitignore
+Gemfile.lock
+app/controllers/application_controller.rb
+app/models/passport_model.rb
+config/database.yml
+log/development.log
