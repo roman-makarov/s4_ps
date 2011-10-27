@@ -3,12 +3,21 @@ ru:
     errors:
       template:
         header: 'Форма заполнена с ошибками'
-        body: 'ошибки'
+        body: ''
       models:
         senddocument:
           attributes:
             document:
-              blank: 'документ обязателене для загрузки'
+              blank: 'Не выбран документ'
+            type_id:
+              blank: 'Не выбран тип документа'
+        authority:
+          attributes:
+            type_id:
+              blank: 'Не выбран тип доверенности'
+            user_id:
+              blank: 'Не выбран пользователь'
+
   shared:
 
     passport_js:  'http://passport-beta.micex.ru/javascripts/passport.js'
@@ -50,3 +59,23 @@ ru:
       - ['Образцы платежных документов',        'http://www.micex.ru/services/marketdata/payment_documents']
       - ['Ответы на часто задаваемые вопросы',  'http://www.micex.ru/services/marketdata/faq']
       - ['Micex Web Client',                    'http://www.micex.ru/services/marketdata/software/web_client']
+      
+    senddocument:
+      header: 'Отправка документа'
+      complete_message: 'Документ успешно отправлен'
+      columns:
+        type_label: 'Тип документа'
+        document_label: 'Документ'
+      send_button: 'Отправить документ'
+      menu_title: 'Отправить документ на биржу'
+    authority:
+      header: 'Создание доверенностей'
+      columns:
+        type_label: 'Тип доверенности'
+        user_label: 'Пользователь организации'
+        new_lastname_label: 'Фамилия'
+        new_firstname_label: 'Имя'
+        new_middlename_label: 'Отчество'
+        new_position_label: 'Должность'
+      create_button: 'Создать доверенность'
+      menu_title: 'Создание доверенностей'
