@@ -7,10 +7,10 @@
                 <div class="date">
                         <p>
                                 <label class="required">По дате:</label>
-                                с: 
-                                <input type="text" name="by_date_start" value="<%= @doc_params['start_date'] %>" placeholder="Например: 01.01.2011" />
-                                по: 
-                                <input type="text" name="by_date_finish" value="<%= @doc_params['end_date'] %>" placeholder="Например: 01.01.2012" />
+                                с
+                                <input type="text" name="by_date_start" value="<%= @doc_params['start_date'] %>" placeholder="Например: 01.01.2011"  class="date_input"  />
+                                по
+                                <input type="text" name="by_date_finish" value="<%= @doc_params['end_date'] %>" placeholder="Например: 01.01.2012"  class="date_input"  />
                         </p>
                 </div>
                 <div>
@@ -47,51 +47,46 @@
                 </div>
                 <div class="submit">
                         <p>
-                                <label>&nbsp;</label>
-                                <input type="submit" id="ffd_submit" value="Искать">
+                          <label>&nbsp;</label>
+                          <input type="submit" id="ffd_submit" value="Найти">
+													<input type="reset" value="Очистить" />
                         </p>
                 </div>
         </form>
 </div>
 
-<% if @documentList != [] %>
 <table cellpadding="0" cellspacing="0" border="0" class="resource">
-        <thead>
-        <tr>
-                <td>Дата отправки</td>
-                <td class="sendname">Наименование отправки</td>
-                <td>Тип</td>
-                <td style="white-space:nowrap;">Период(год, квартал)</td>
-                <td>Ник отправителя</td>
-                <td>Статус</td>
-                <td>Комментарий клиентского центра</td>
-        </tr>
-        </thead>
-        <tbody>
-                <% @documentList.each do |column| %>
-                        <%
-                                        public_date = column['sended_date'];
-                        %>
-                        <tr class='<%= cycle ('odd', 'even') %>' >
-                                <td>
-                                        <%=public_date[8..9] %>.<%=public_date[5..6] %>.<%=public_date[0..3] %>
-                                </td>
-                                <td><%= column['name'] %></td>
-                                <td><%= column['sended_form_type.name'] %></td>
-                                <td><%= column['sended_form_date'] %></td>
-                                <td><%= column['sender'] %></td>
-                                <td><%= column['status'] %></td>
-                                <td>
-                                        <%= column['note'] != "" ? column['note'] : "-"  %>
-                                </td>
-                        </tr>
-                <% end %>
-        </tbody>
+	<thead>
+		<tr>
+		  <td>Дата отправки</td>
+		  <td class="sendname">Наименование отправки</td>
+		  <td>Тип</td>
+		  <td style="white-space:nowrap;">Период(год, квартал)</td>
+		  <td>Ник отправителя</td>
+		  <td>Статус</td>
+		  <td>Комментарий клиентского центра</td>
+		</tr>
+	</thead>
+	<tbody>
+	<% if @documentList != [] %>
+		<% @documentList.each do |column| %>
+		  <% public_date = column['sended_date']; %>
+		  <tr class='<%= cycle ('odd', 'even') %>' >
+		    <td><%=public_date[8..9] %>.<%=public_date[5..6] %>.<%=public_date[0..3] %></td>
+		    <td><%= column['name'] %></td>
+		    <td><%= column['sended_form_type.name'] %></td>
+		    <td><%= column['sended_form_date'] %></td>
+		    <td><%= column['sender'] %></td>
+		    <td><%= column['status'] %></td>
+		    <td><%= column['note'] != "" ? column['note'] : "-"  %></td>
+		  </tr>
+		<% end %>
+	<% else %>
+		<tr>
+			<td colspan="7">
+				Соответвующие вашему запросу документы отсутсвуют
+			</td>
+		</tr>
+	<% end %>
+ </tbody>
 </table>
-
-<div style="font-size:10px;">
-        **Статусы: отправлен, принят, на согласовании, не согласован, требуется печатная копию.
-</div>
-<% else %>
-Документов нет
-<% end %>
