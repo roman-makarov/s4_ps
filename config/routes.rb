@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :reports
   
-  map.resources :senddocuments
+  map.resources :senddocuments, :collection => { :list => :get }
   map.resources :authorities
   
   map.insider     "/insider", :controller => :insiders, :action => :new,    :conditions => { :method => :get }
