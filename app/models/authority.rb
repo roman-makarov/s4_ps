@@ -7,5 +7,5 @@ class Authority < ActiveRecord::BaseWithoutTable
   column :middlename,  :string
   column :position,    :string
   
-  validates_presence_of :type_id, :user_id
+  validates_presence_of :type_id
 end

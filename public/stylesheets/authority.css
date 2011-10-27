@@ -7,12 +7,16 @@
 .authority div,
 .authority form {
     float: left;
+    font: normal normal normal 12px/16px arial, sans-serif;
 }
 
 .authority_label {
-    width: 180px;
-    text-align: right;
+    width: 165px;
+    text-align: left;
     margin-right: 5px;
+    font-size: 11px;
+    line-height: 24px;
+    margin-top: 3px;
 }
 
 .authority_field {
@@ -45,4 +49,13 @@
 
 label.required {
     font-weight: bold;
+}
+
+.legend {
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid #DDD;
+    color: #999;
+    padding-left: 10px;
 }

@@ -7,6 +7,8 @@ class AuthoritiesController < ApplicationController
     if !session['form'].nil?
       @authority = session['form']
       session.delete('form')
+    else
+      @authority = Authority.new
     end
     @warrant_types = S4::WarrantType.all(s4_user)
     @warrant_agents = S4::WarrantAgent.all(s4_user)
@@ -16,11 +18,16 @@ class AuthoritiesController < ApplicationController
     authority = params[:authority]
     @authority = Authority.new(authority)
     if @authority.valid?
+      if authority[:user_id] == ''
+        #authority[:user_id] = 2123
+        
+      end
       S4::WarrantField.scope = {
         'warrant_type_id' => authority['type_id'],
         'agent_id' => authority['user_id']
       }
-      @vars = S4::WarrantField.find_with_scope(s4_user, {'scope' => '213'}).attributes
+      @vars = S4::WarrantField.find_with_scope(s4_user).attributes
+      Rails.logger.info("vars = #{@vars}")
       send_data render_to_pdf({
         :action => "authority_#{authority[:type_id]}",
         :layout => false }
