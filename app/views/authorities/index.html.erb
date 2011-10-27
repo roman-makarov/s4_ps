@@ -1,3 +1,38 @@
-<!-- <%= debug @help %> -->
-<%= debug @users %>
-<%= @authority.render %>
+<%= stylesheet_link_tag("authority") %>
+
+<h1 class="authority_header"><%= t(:header, :scope => [:shared, :authority]) %></h1>
+
+<%= error_messages_for :authority %>
+<div class="authority">
+<% form_tag("", {:name => "authority"}) do %>
+  <div>
+      <div class="authority_label"><label class="required"><%= t(:type_label, :scope => [:shared, :authority, :columns]) %>: </label></div>
+      <div class="authority_field"><%= collection_select(:authority, :type_id, @warrant_types, :id, :name, {:include_blank => ''}) %><span class="star">*</span></div>
+  </div>
+  <div>
+      <div class="authority_label"><label class="required"><%= t(:user_label, :scope => [:shared, :authority, :columns]) %>: </label></div>
+      <div class="authority_field"><%= collection_select(:authority, :user_id, @warrant_agents, :id, :full_name, {:include_blank => 'Новый пользователь'}) %><span class="star">*</span></div>
+  </div>
+  <div>
+      <div class="authority_label"><label><%= t(:new_lastname_label, :scope => [:shared, :authority, :columns]) %>: </label></div>
+      <div class="authority_field"><%= text_field(:authority, :lastname) %></div>
+  </div>
+  <div>
+      <div class="authority_label"><label><%= t(:new_firstname_label, :scope => [:shared, :authority, :columns]) %>: </label></div>
+      <div class="authority_field"><%= text_field(:authority, :firstname) %></div>
+  </div>
+  <div>
+      <div class="authority_label"><label><%= t(:new_middlename_label, :scope => [:shared, :authority, :columns]) %>: </label></div>
+      <div class="authority_field"><%= text_field(:authority, :middlename) %></div>
+  </div>
+  <div>
+      <div class="authority_label"><label><%= t(:new_position_label, :scope => [:shared, :authority, :columns]) %>: </label></div>
+      <div class="authority_field"><%= text_field(:authority, :position) %></div>
+  </div>
+  <br>
+  <div>
+      <div class="authority_label">&nbsp;</div>
+      <div class="authority_field authority_button"><%= submit_tag(t(:create_button, :scope => [:shared, :authority])) %></div>
+  </div>
+<% end %>
+</div>

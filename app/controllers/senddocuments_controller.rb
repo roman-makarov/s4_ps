@@ -1,45 +1,32 @@
-class SenddocumentController < ApplicationController
-  
-  @sessionId = nil
+class SenddocumentsController < ApplicationController
+  include SenddocumentsHelper
   
   helper :members_menu
   
   def index
-    @params = params
-    if request.post?
-      @document = Senddocument.create({:typeId => @params[:typeId], :document => @params[:document]})
-      @document.name = 'document'
-      @document.action = 'send-document'
-      @document.method = 'post'
-      if @document.valid?
-        S4.site = 'http://s4-beta.micex.ru/S4XmlRpcService'
-        @sessionId = S4.connection.call("s4.openSession", I18n.locale)
-        @resource = S4.connection.call("s4.setResource", @sessionId, 'sended_form', 'userId', {
-        'file_id_link'=>'http://getfile.com/dfjRFEDFE',
-        'file_id'=>'отчет.zip',
-        'status'=>'1'
-        })
-        session['completeMessage'] = "Документ успешно отправлен на Биржу"
-      else
-        session['form'] = @document
-        redirect_to :action => 'index'
-      end
+    if !session['form'].nil?
+      @senddocument = session.delete('form')
     else
-      if session['form'].nil?
-        @document = Senddocument.new
-        @document.name = 'document'
-        @document.action = 'send-document'
-        @document.method = 'post'
-        
-        if !session['completeMessage'].nil?
-          @completeMessage = session['completeMessage']
-          session['completeMessage'] = nil
-        end
-      else
-        @document = session['form']
-        session['form'] = nil
-      end
+      @senddocument = Senddocument.new
     end
+    if !session['complete_message'].nil?
+      @complete_message = session['complete_message']
+      session.delete('complete_message')
+    end
+    S4::SendedFormType.scope = {'sended_form_kind' => '5'}
+    @document_types = S4::SendedFormType.all_with_scope(s4_user)
+  end
+  
+  def create
+    senddocument = params[:senddocument]
+    @senddocument = Senddocument.new(senddocument)
+    if @senddocument.valid?
+      send_document(senddocument)
+      session['complete_message'] = t(:complete_message, :scope => [:shared, :senddocument])
+    else
+      session['form'] = @senddocument
+    end
+    redirect_to :action => 'index'
   end
   
   def list
