@@ -59,7 +59,7 @@ class SenddocumentController < ApplicationController
 			@by_date_finish = ''
 		end
     if @by_type == '' || @by_type.nil?
-            @by_type = '15'
+            @by_type = ''
     end
     if @document_name == '' || @document_name.nil?
             @document_name = ''
@@ -72,7 +72,7 @@ class SenddocumentController < ApplicationController
     @sessionId = S4.connection.call("s4.openSession", I18n.locale)
 
     @doc_params = {
-      'sended_form_status' => '1',
+      #'sended_form_status' => '1',
       'start_date' => @by_date_start,
       'end_date' => @by_date_finish,
       'sended_form_kind' => '5',
