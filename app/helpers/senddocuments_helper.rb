@@ -15,8 +15,6 @@ module SenddocumentsHelper
       'status'           => '1'
     }
     S4::SendedForm.scope = scope
-    Rails.logger.info("sended_document = #{scope.inspect}")
-    Rails.logger.info("session = #{S4.session}")
     S4::SendedForm.set_with_scope(s4_user)
   end
   

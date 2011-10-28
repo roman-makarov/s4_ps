@@ -11,22 +11,21 @@ module S4
     end
     
     def self.find(*params)
-      Rails.logger.info("params = #{params.inspect}")
       Rails.cache.fetch("S4::Resource::#{resource_type.to_param}::#{params.join("::")}", :expires_in => 1.minute) do
         new(params.first, parse_one(call_with_session("s4.getResource", resource_type.to_param, *params.collect(&:to_param))))
       end
     end
     
     def self.all_with_scope(*params)
-      Rails.cache.fetch("S4::Resources::#{resource_type.to_param}::#{params.join("::")}", :expires_in => 1.minute) do
+      #Rails.cache.fetch("S4::Resources::scope::#{resource_type.to_param}::#{params.join("::")}", :expires_in => 1.minute) do
         parse_many(call_with_session("s4.listResources", resource_type.to_param, params.first, scope, '')).collect { |attributes| new(params.first, attributes) }
-      end
+      #end
     end
     
     def self.find_with_scope(*params)
-      Rails.cache.fetch("S4::Resource::#{resource_type.to_param}::#{params.join("::")}", :expires_in => 1.minute) do
+      #Rails.cache.fetch("S4::Resource::scope::#{resource_type.to_param}::#{params.join("::")}", :expires_in => 1.minute) do
         new(params.first, parse_one(call_with_session("s4.getResource", resource_type.to_param, params.first, scope, '')))
-      end
+      #end
     end
     
     def self.set_with_scope(*params)
