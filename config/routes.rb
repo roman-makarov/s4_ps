@@ -14,17 +14,13 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :reports
   
-  map.connect "senddocuments/warrant",
-    :controller => :authorities,
-    :action => :index
-  
   map.resources :senddocuments, :collection => {
     :list => :get,
     :message => :get,
     :form => :get,
     :warrant => :get
   }
-  map.resource :authorities
+  map.resources :authorities
   
   map.insider     "/insider", :controller => :insiders, :action => :new,    :conditions => { :method => :get }
   map.rat_insider "/insider", :controller => :insiders, :action => :create, :conditions => { :method => :post }

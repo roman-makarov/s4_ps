@@ -1,6 +1,8 @@
 <%= stylesheet_link_tag("senddocument2") %>
 
-<h1 class="senddocument_header"><%= t(:header_document, :scope => [:shared, :senddocument]) %></h1>
+<h1 class="senddocument_header"><%= t(:menu_title, :scope => [:shared, :senddocument]) %></h1>
+
+<%= contextual_menu %>
 
 <h2 style="color: green;"><%= @complete_message %></h2>
 
