@@ -6,8 +6,7 @@ module MembersMenuHelper
       ul.li t(:title, :scope => :markets),                      markets_path,       :markets
       ul.li t(:title, :scope => :documents),                    documents_path,     :documents
       ul.li t(:title, :scope => :cards),                        cards_path,         :cards
-      ul.li t(:menu_title, :scope => [:shared, :senddocument]), senddocuments_path, :senddocuments
-      ul.li t(:menu_title, :scope => [:shared, :authority]),    authorities_path,   :authorities
+      ul.li t(:menu_title, :scope => [:shared, :senddocument]), list_senddocuments_path,  :senddocuments => :list
     end if s4_user
   end
 

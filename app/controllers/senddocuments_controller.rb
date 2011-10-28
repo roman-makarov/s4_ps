@@ -1,9 +1,13 @@
 class SenddocumentsController < ApplicationController
   include SenddocumentsHelper
   
-  helper :members_menu
+  helper :members_menu, :document_menu
   
-  def index
+  def message
+    
+  end
+  
+  def form
     if !session['form'].nil?
       @senddocument = session.delete('form')
     else
@@ -26,7 +30,7 @@ class SenddocumentsController < ApplicationController
     else
       session['form'] = @senddocument
     end
-    redirect_to :action => 'index'
+    redirect_to :action => 'form'
   end
   
   def list
@@ -80,5 +84,13 @@ class SenddocumentsController < ApplicationController
 
     @senderList = S4.connection.call("s4.getResource", @sessionId, 'sender_email', "76831d27-6daf-44af-bb73-a72875e9a04f");
     @senderList = S4::Resource.parse_many(@senderList)
+  end
+  
+  def index
+    
+  end
+  
+  def warrant
+    
   end
 end

@@ -1,8 +1,8 @@
 <%= stylesheet_link_tag("senddocument2") %>
 
-<h1 class="senddocument_header"><%= t(:header, :scope => [:shared, :senddocument]) %></h1>
+<h1 class="senddocument_header"><%= t(:header_document, :scope => [:shared, :senddocument]) %></h1>
 
-<h3><%= @complete_message %></h3>
+<h2 style="color: green;"><%= @complete_message %></h2>
 
 <%= error_messages_for :senddocument %>
 <div class="senddocument">

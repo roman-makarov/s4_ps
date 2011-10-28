@@ -2,6 +2,8 @@
 
 <h1>Поиск документа:</h1>
 
+<%= contextual_menu %>
+
 <div id="form_finder_document" style="margin:0 0 20px 0;">
         <form action="" method="post" class="form_find_documents">
                 <div class="date">
@@ -90,3 +92,6 @@
 	<% end %>
  </tbody>
 </table>
+
+
+<%= link_to( t(:header_document, :scope => [:shared, :senddocument]), {:action => :form}) %>

@@ -3,6 +3,8 @@
 
 <h1 class="authority_header"><%= t(:header, :scope => [:shared, :authority]) %></h1>
 
+<%= contextual_menu %>
+
 <%= error_messages_for :authority %>
 <div class="authority">
 <% form_for @authority do |f| %>

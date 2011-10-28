@@ -1,7 +1,7 @@
 ru:
   shared:
     authority:
-      header: 'Создание доверенностей'
+      header: 'Доверенности'
       columns:
         type_label: 'Тип доверенности: '
         user_label: 'Пользователь организации: '
