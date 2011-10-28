@@ -6,7 +6,7 @@ module SenddocumentsHelper
       file.write(uploaded.read)
     end
     
-    file_link = "#{request.env["HTTP_HOST"]}/uploads/#{uploaded.original_filename}"
+    file_link = "#{request.protocol}#{request.host}/uploads/#{uploaded.original_filename}"
     scope = {
       'sended_form_type' => params[:type_id],
       'sended_date'      => '12.12.2012',

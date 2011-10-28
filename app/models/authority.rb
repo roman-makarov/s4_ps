@@ -8,4 +8,23 @@ class Authority < ActiveRecord::BaseWithoutTable
   column :position,    :string
   
   validates_presence_of :type_id
+  
+  def self.human_attribute_name(attr)
+    case attr
+    when 'type_id'
+      ''
+    when 'user_id'
+      ''
+    when 'lastname'
+      ''
+    when 'firstname'
+      ''
+    when 'middlename'
+      ''
+    when 'position'
+      ''
+    else
+      super
+    end
+  end
 end
