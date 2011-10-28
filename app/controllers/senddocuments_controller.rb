@@ -35,7 +35,11 @@ class SenddocumentsController < ApplicationController
   
   def list
 		regex = /\d{2}\.\d{2}\.\d{4}/
-		time_now = Time.now
+    time_now = Time.now
+    
+    @documentfilter = Documentfilter.new
+    
+    @df_params = params[:documentfilter]
 
     @by_date_start = params['by_date_start']
     @by_date_finish = params['by_date_finish']
@@ -44,11 +48,11 @@ class SenddocumentsController < ApplicationController
     @by_sender = params['by_sender']
 
     if @by_date_start == '' || @by_date_start.nil? || @by_date_start !~ regex
-			@by_date_start = ''
-		end
-		if @by_date_finish == '' || @by_date_finish.nil? || @by_date_finish !~ regex
-			@by_date_finish = ''
-		end
+      @by_date_start = ''
+    end
+    if @by_date_finish == '' || @by_date_finish.nil? || @by_date_finish !~ regex
+      @by_date_finish = ''
+    end
     if @by_type == '' || @by_type.nil?
             @by_type = ''
     end
@@ -73,17 +77,22 @@ class SenddocumentsController < ApplicationController
     }
     
     @doc_params.delete_if {|key, value| value == "" }
-                
-    @documentList = S4.connection.call("s4.getResource", @sessionId, 'sended_form', "76831d27-6daf-44af-bb73-a72875e9a04f", @doc_params, '')
-    @documentList = S4::Resource.parse_many(@documentList)
+    
+    S4::SendedForm.scope = @doc_params
+    @documentListing = S4::SendedForm.all_with_scope(s4_user)
 
     @typesList = S4.connection.call("s4.getResource", @sessionId, 'sended_form_type', "76831d27-6daf-44af-bb73-a72875e9a04f", {
       'sended_form_kind' => '5'        
     }, '');
     @typesList = S4::Resource.parse_many(@typesList)
+    
+    S4::SendedFormType.scope = {'sended_form_kind' => '5'}
+    @typesListing = S4::SendedFormType.all_with_scope(s4_user)
 
     @senderList = S4.connection.call("s4.getResource", @sessionId, 'sender_email', "76831d27-6daf-44af-bb73-a72875e9a04f");
     @senderList = S4::Resource.parse_many(@senderList)
+    
+    @senderListing = S4::SendEmail.all_with_scope(s4_user)
   end
   
   def index

@@ -12,11 +12,12 @@
 		  padding: 0;
 		  position: relative;
 	}
-	#form_finder_document p label {
-		  float: left;
-		  font-size: 11px;
-		  line-height: 24px;
-		  width: 170px;
+	#form_finder_document p span.label_span {
+		display:block;
+		float: left;
+		font-size: 11px;
+		line-height: 24px;
+		width: 170px;
 	}
 	#form_finder_document .required {
 		  font-weight: bold;
@@ -38,7 +39,7 @@
 	#form_finder_document select {
 		width: 369px;
 	}
-	#form_finder_document input.date_input {
+	#form_finder_document p.date_fields input {
 		width:160px;	
 	}
 	#form_finder_document input#feedback_occupation {

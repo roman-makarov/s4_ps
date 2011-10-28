@@ -1,97 +1,48 @@
 <%= stylesheet_link_tag 'senddocument' %>
+<%= error_messages_for :documentfilter %>
+<h1 class="senddocument_header"><%= t(:menu_title, :scope => [:shared, :senddocument]) %></h1>
 
-<h1>Поиск документа:</h1>
-
-<%= contextual_menu %>
 
 <div id="form_finder_document" style="margin:0 0 20px 0;">
-        <form action="" method="post" class="form_find_documents">
-                <div class="date">
-                        <p>
-                                <label class="required">По дате:</label>
-                                с
-                                <input type="text" name="by_date_start" value="<%= @doc_params['start_date'] %>" placeholder="Например: 01.01.2011"  class="date_input"  />
-                                по
-                                <input type="text" name="by_date_finish" value="<%= @doc_params['end_date'] %>" placeholder="Например: 01.01.2012"  class="date_input"  />
-                        </p>
-                </div>
-                <div>
-                        <p>
-                                <label class="required">По типу:</label>
-                                <select name="by_type">
-                                        <option value=""></option>
-                                        <% @typesList.each do |thisType| %>
-                                                <option value="<%= thisType['id'] %>" <%= @doc_params['sended_form_type'] ==  thisType['id'] ? "selected" : ""  %> >
-                                                        <%= thisType['name'] %>
-                                                </option>
-                                        <% end %>
-                                </select>
-                        </p>
-                </div>
-                <div>
-                        <p>
-                                <label class="required">По наименованию документа:</label>
-                                <input type="text" name="document_name" value="<%= @doc_params['name'] %>" />
-                        </p>
-                </div>
-                <div>
-                        <p>
-                                <label class="required">По отправителю:</label>
-                                <select name="by_sender">
-                                        <option value=""></option>
-                                        <% @senderList.each do |thisSender| %>
-                                                <option value="<%= thisSender['sender_email_id'] %>" <%= @doc_params['sender'] !=  thisSender['sender_email_id'] ? "" : "selected"  %> >
-                                                        <%= thisSender['email'] %>
-                                                </option>
-                                        <% end %>
-                                </select>
-                        </p>
-                </div>
-                <div class="submit">
-                        <p>
-                          <label>&nbsp;</label>
-                          <input type="submit" id="ffd_submit" value="Найти">
-													<input type="reset" value="Очистить" />
-                        </p>
-                </div>
-        </form>
+<% form_for @documentfilter, :method => "get", :url => { :action => "list"}, :html => { :method => "get" } do |f| %>
+  <div class="date">
+    <p class="date_fields">
+      <span class="label_span"><label class="required">По дате:</label></span>
+        <%= f.label :by_date_start, t(:by_date_start, :scope => [:shared, :documentfilter, :columns]) %>
+        <%= f.text_field :by_date_start %>
+        <%= f.label :by_date_finish, t(:by_date_finish, :scope => [:shared, :documentfilter, :columns]) %>
+        <%= f.text_field :by_date_finish %>
+    </p>
+  </div>
+  <div>
+	<p>
+	    <span class="label_span"><%= f.label :by_type, t(:type_label, :scope => [:shared, :documentfilter, :columns]), :class => "required" %></span>
+	    <%= f.select(:by_type,@typesListing.collect {|typesListing| [typesListing.name, typesListing.id]}, {:include_blank => ''}) %>
+	</p>
+  </div>
+  <div>
+      <p>
+        <span class="label_span"><%= f.label :document_name, t(:document_name, :scope => [:shared, :documentfilter, :columns]) %></span>
+        <%= f.text_field :document_name %>
+      </p>
+  </div>
+  <div>
+     <p>
+       <span class="label_span"><%= f.label :by_sender, t(:by_sender, :scope => [:shared, :documentfilter, :columns]) %></span>
+       <%= f.select(:by_sender,@senderListing.collect {|senderListing| [senderListing.email, senderListing.sender_email_id]}, {:include_blank => ''}) %>
+     </p>
+  </div>
+  
+  <div class="submit">
+    <p>
+      <span class="label_span"><label>&nbsp;</label></span>
+      <%= f.submit t(:create_button, :scope => [:shared, :documentfilter]) %>
+      <input type="reset" value="Очистить" />
+    </p>
+  </div>
+<% end %>
 </div>
 
-<table cellpadding="0" cellspacing="0" border="0" class="resource">
-	<thead>
-		<tr>
-		  <td>Дата отправки</td>
-		  <td class="sendname">Наименование отправки</td>
-		  <td>Тип</td>
-		  <td style="white-space:nowrap;">Период(год, квартал)</td>
-		  <td>Ник отправителя</td>
-		  <td>Статус</td>
-		  <td>Комментарий клиентского центра</td>
-		</tr>
-	</thead>
-	<tbody>
-	<% if @documentList != [] %>
-		<% @documentList.each do |column| %>
-		  <% public_date = column['sended_date']; %>
-		  <tr class='<%= cycle ('odd', 'even') %>' >
-		    <td><%=public_date[8..9] %>.<%=public_date[5..6] %>.<%=public_date[0..3] %></td>
-		    <td><%= column['name'] %></td>
-		    <td><%= column['sended_form_type.name'] %></td>
-		    <td><%= column['sended_form_date'] %></td>
-		    <td><%= column['sender'] %></td>
-		    <td><%= column['status'] %></td>
-		    <td><%= column['note'] != "" ? column['note'] : "-"  %></td>
-		  </tr>
-		<% end %>
-	<% else %>
-		<tr>
-			<td colspan="7">
-				Соответвующие вашему запросу документы отсутсвуют
-			</td>
-		</tr>
-	<% end %>
- </tbody>
-</table>
-
+<%= resource_table(S4::SendedForm.schema, @documentListing) %> 
 
 <%= link_to( t(:header_document, :scope => [:shared, :senddocument]), {:action => :form}) %>
