@@ -22,11 +22,6 @@ module SenddocumentsHelper
   def parse_params_not_nil(documentfilter)
     
     regex = /\d{2}\.\d{2}\.\d{4}/
-    #@by_date_start = documentfilter['by_date_start']
-    #@by_date_finish = documentfilter['by_date_finish']
-    #@by_type = documentfilter['by_type']
-    #@document_name = documentfilter['document_name']
-    #@by_sender = documentfilter['by_sender']
 
     if !documentfilter.nil? && (!documentfilter['by_date_start'].nil? || documentfilter['by_date_start'] == '' || documentfilter['by_date_start'] !~ regex)
       @by_date_start = documentfilter['by_date_start']

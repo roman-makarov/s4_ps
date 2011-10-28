@@ -4,6 +4,9 @@ class SenddocumentsController < ApplicationController
   helper :members_menu, :document_menu
   
   def message
+    messageForm_params = params[:messageform]
+    @messageform = Messageform.new(messageForm_params)
+    
     
   end
   
