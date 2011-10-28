@@ -5,9 +5,14 @@ class SenddocumentsController < ApplicationController
   
   def message
     messageForm_params = params[:messageform]
-    @messageform = Messageform.new(messageForm_params)
     
-    
+    if !messageForm_params.nil? && (!messageForm_params['theme'].nil? && !messageForm_params['text'].nil?)
+      send_message(messageForm_params)
+      @complete_message = t(:complete_message, :scope => [:shared, :sendmessages])
+      @messageform = Messageform.new
+    else
+      @messageform = Messageform.new(messageForm_params)
+    end
   end
   
   def form
@@ -44,11 +49,6 @@ class SenddocumentsController < ApplicationController
     @documentfilter = Documentfilter.new(@documentfilter)
     
     @doc_params = parse_params_not_nil(@documentfilter)
-    
-    
-
-    S4.site = 'http://s4-beta.micex.ru/S4XmlRpcService'
-    @sessionId = S4.connection.call("s4.openSession", I18n.locale)
     
     S4::SendedForm.scope = @doc_params
     @documentListing = S4::SendedForm.all_with_scope(s4_user)

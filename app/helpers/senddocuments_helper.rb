@@ -18,6 +18,16 @@ module SenddocumentsHelper
     S4::SendedForm.set_with_scope(s4_user)
   end
   
+  def send_message(params)
+    scope = {
+      'sended_form_type' => '13',
+      'name' => params['theme'],
+      'message_body' => params['text'],
+      'status' => '6'
+    }
+    S4::SendedForm.scope = scope
+    S4::SendedForm.set_with_scope(s4_user)
+  end
   
   def parse_params_not_nil(documentfilter)
     
