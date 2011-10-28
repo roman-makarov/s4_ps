@@ -57,18 +57,6 @@ class SenddocumentsController < ApplicationController
     @typesListing = S4::SendedFormType.all_with_scope(s4_user)
     
     @senderListing = S4::SendEmail.all_with_scope(s4_user)
-
-    
-    #@documentList = S4.connection.call("s4.getResource", @sessionId, 'sended_form', "8de0f94c-536a-40be-af22-9571649b3616", @doc_params, '');
-    #@documentList = S4::Resource.parse_many(@documentList)
-    
-    #@senderList = S4.connection.call("s4.getResource", @sessionId, 'sender_email', "8de0f94c-536a-40be-af22-9571649b3616");
-    #@senderList = S4::Resource.parse_many(@senderList)
-    
-   # @typesList = S4.connection.call("s4.getResource", @sessionId, 'sended_form_type', "8de0f94c-536a-40be-af22-9571649b3616", {
-    #  'sended_form_kind' => '5'        
-    #}, '');
-    #@typesList = S4::Resource.parse_many(@typesList)
   end
   
   def index

@@ -18,8 +18,13 @@
 	</div>
 	<div>
 		<p>
+			<span class="label_span"><%= f.label :text, t(:text, :scope => [:shared, :message, :columns]) %></span>
+		</p>
+	</div>
+	<div>
+		<p>
 			<span class="label_span">
-				<%= f.label :text, t(:text, :scope => [:shared, :message, :columns]) %>
+				&nbsp;
 			</span>
         	<%= f.text_area :text %>
 		</p>
@@ -27,7 +32,7 @@
 	<div class="submit">
 		<p>
 			<span class="label_span"><label>&nbsp;</label></span>
-			<%= f.submit t(:create_button, :scope => [:shared, :documentfilter]) %>
+			<%= f.submit t(:create_button, :scope => [:shared, :message]) %>
 		</p>
 </div>
 <% end %>

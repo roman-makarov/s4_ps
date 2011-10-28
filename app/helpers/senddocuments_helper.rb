@@ -33,30 +33,30 @@ module SenddocumentsHelper
     
     regex = /\d{2}\.\d{2}\.\d{4}/
 
-    if !documentfilter.nil? && (!documentfilter['by_date_start'].nil? || documentfilter['by_date_start'] == '' || documentfilter['by_date_start'] !~ regex)
+    if !documentfilter.nil? && (!documentfilter['by_date_start'].nil? && documentfilter['by_date_start'] != '' && documentfilter['by_date_start'] !~ regex)
       @by_date_start = documentfilter['by_date_start']
     else 
         @by_date_start = ''
     end
     
-    if !documentfilter.nil? && (!documentfilter['by_date_finish'].nil? || documentfilter['by_date_finish'] == '' || documentfilter['by_date_finish'] !~ regex)
+    if !documentfilter.nil? && (!documentfilter['by_date_finish'].nil? && documentfilter['by_date_finish'] != '' && documentfilter['by_date_finish'] !~ regex)
       @by_date_finish = documentfilter['by_date_finish']
     else 
         @by_date_finish = ''
     end
     
-    if !documentfilter.nil? && (documentfilter['by_type'] == '' || !documentfilter['by_type'].nil?)
+    if !documentfilter.nil? && (documentfilter['by_type'] != '' && !documentfilter['by_type'].nil?)
       @by_type = documentfilter['by_type']
     else 
         @by_type = ''
     end
     
-    if !documentfilter.nil? && (documentfilter['document_name'] == '' || !documentfilter['document_name'].nil?)
+    if !documentfilter.nil? && (documentfilter['document_name'] != '' && !documentfilter['document_name'].nil?)
       @document_name = documentfilter['document_name']
     else 
         @document_name = ''
     end
-    if !documentfilter.nil? && (documentfilter['by_sender'] == '' || !documentfilter['by_sender'].nil?)
+    if !documentfilter.nil? && (documentfilter['by_sender'] != '' && !documentfilter['by_sender'].nil?)
       @by_sender = documentfilter['by_sender']
     else 
         @by_sender = ''
