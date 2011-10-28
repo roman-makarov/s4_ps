@@ -2,7 +2,7 @@
 <%= error_messages_for :documentfilter %>
 <h1 class="senddocument_header"><%= t(:menu_title, :scope => [:shared, :senddocument]) %></h1>
 
-
+<%= contextual_menu %>
 <div id="form_finder_document" style="margin:0 0 20px 0;">
 <% form_for @documentfilter, :method => "get", :url => { :action => "list"}, :html => { :method => "get" } do |f| %>
   <div class="date">
