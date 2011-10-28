@@ -3,6 +3,7 @@
 <h1 class="senddocument_header"><%= t(:menu_title, :scope => [:shared, :senddocument]) %></h1>
 
 <%= contextual_menu %>
+
 <div id="form_finder_document" style="margin:0 0 20px 0;">
 <% form_for @documentfilter, :method => "get", :url => { :action => "list"}, :html => { :method => "get" } do |f| %>
   <div class="date">
@@ -43,6 +44,30 @@
 <% end %>
 </div>
 
-<%= resource_table(S4::SendedForm.schema, @documentListing) %> 
-
-<%= link_to( t(:header_document, :scope => [:shared, :senddocument]), {:action => :form}) %>
+<% if @documentListing.size != 0 %>
+<%= resource_table(S4::SendedForm.schema, @documentListing) %>
+<%else%>
+	<table class="resource">
+		<thead>
+			<tr>
+				<td>Код отправленного документа</td>
+				<td>Дата отправки</td>
+				<td>Заголовок сообщения</td>
+				<td>Текст сообщения</td>
+				<td>Тип процедуры (документа)</td>
+				<td>Дата, год-квартал</td>
+				<td>ФИО отправителя</td>
+				<td>Название файла</td>
+				<td>Статус</td>
+				<td>Комментарий сотрудника биржы</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="10">
+					Соответвующие вашему запросу документы отсутсвуют
+				</td>
+			</tr>
+		</tbody>
+	</table>
+<%end%>
