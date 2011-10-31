@@ -13,3 +13,4 @@ log/development.log
 *.log
 *.pid
 
+public/uploads
