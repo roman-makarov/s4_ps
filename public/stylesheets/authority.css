@@ -1,3 +1,8 @@
+div.field-i {
+	overflow:hidden;
+	padding-bottom:10px;
+}
+
 .authority_header {
     color: #006299;
     font: normal normal normal 20px/24px arial, sans-serif;
@@ -6,21 +11,24 @@
 .authority,
 .authority div,
 .authority form {
-    float: left;
-    font: normal normal normal 12px/16px arial, sans-serif;
+    //float: left;
+    //font: normal normal normal 12px/16px arial, sans-serif;
 }
 
 .authority_label {
+	clear:left;
     width: 165px;
     text-align: left;
     margin-right: 5px;
     font-size: 11px;
     line-height: 24px;
     margin-top: 3px;
+    float:left;
 }
 
 .authority_field {
     width: 400px;
+    float:left;
 }
 
 .authority_field select,
@@ -48,7 +56,7 @@
 }
 
 label.required {
-    font-weight: bold;
+    //font-weight: bold;
 }
 
 .legend {

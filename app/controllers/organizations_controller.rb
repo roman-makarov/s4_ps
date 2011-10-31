@@ -23,7 +23,9 @@ class OrganizationsController < ApplicationController
     @sessionId = S4.connection.call("s4.openSession", I18n.locale)
 		@documentList = S4.connection.call("s4.getResource", @sessionId, 'personal_manager', "76831d27-6daf-44af-bb73-a72875e9a04f")
     @documentList = S4::Resource.parse_many(@documentList)
-		
+
+
+		@personal_managers = S4::PersonalManager.all_with_scope(s4_user)
 	
 		base_64_encoded_data = "R0lGODlhUAAPAKIAAAsLav///88PD9WqsYmApmZmZtZfYmdakyH5BAQUAP8ALAAAAABQAA8AAAPb
 WLrc/jDKSVe4OOvNu/9gqARDSRBHegyGMahqO4R0bQcjIQ8E4BMCQc930JluyGRmdAAcdiigMLVr

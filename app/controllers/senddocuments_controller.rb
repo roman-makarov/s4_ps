@@ -6,7 +6,9 @@ class SenddocumentsController < ApplicationController
   def message
     messageForm_params = params[:messageform]
     
-    if !messageForm_params.nil? && (!messageForm_params['theme'].nil? && !messageForm_params['text'].nil?)
+    @messageForm_params = params[:messageform]
+    
+    if !messageForm_params.nil? && (!messageForm_params['theme'].nil? && !messageForm_params['text'].nil? && messageForm_params['text'] != '' && messageForm_params['theme'] != '' )
       send_message(messageForm_params)
       @complete_message = t(:complete_message, :scope => [:shared, :sendmessages])
       @messageform = Messageform.new

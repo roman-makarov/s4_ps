@@ -12,4 +12,15 @@ log/development.log
 *.cache
 *.log
 *.pid
-
+config/*.sphinx.conf
+tmp/**/*
+db/cstore/**
+db/sphinx/**
+doc/api
+doc/app
+doc/plugins
+doc/*.dot
+coverage/*
+db/*.sqlite3
+*.tmproj
+*.sw?

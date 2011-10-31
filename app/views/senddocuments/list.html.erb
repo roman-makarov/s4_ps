@@ -3,7 +3,6 @@
 <h1 class="senddocument_header"><%= t(:menu_title, :scope => [:shared, :senddocument]) %></h1>
 
 <%= contextual_menu %>
-
 <div id="form_finder_document" style="margin:0 0 20px 0;">
 <% form_for @documentfilter, :method => "get", :url => { :action => "list"}, :html => { :method => "get" } do |f| %>
   <div class="date">
@@ -18,7 +17,7 @@
   <div>
 	<p>
 	    <span class="label_span"><%= f.label :by_type, t(:type_label, :scope => [:shared, :documentfilter, :columns]), :class => "required" %></span>
-	    <%= f.select(:by_type,@typesListing.collect {|typesListing| [typesListing.name, typesListing.id]}, {:include_blank => ''}) %>
+	    <%= f.select(:by_type,@typesListing.collect {|typesListing| [typesListing.name, typesListing.id]}, {:include_blank => 'Все типы'}) %>
 	</p>
   </div>
   <div>
@@ -30,7 +29,7 @@
   <div>
      <p>
        <span class="label_span"><%= f.label :by_sender, t(:by_sender, :scope => [:shared, :documentfilter, :columns]) %></span>
-       <%= f.select(:by_sender,@senderListing.collect {|senderListing| [senderListing.email, senderListing.sender_email_id]}, {:include_blank => ''}) %>
+       <%= f.select(:by_sender,@senderListing.collect {|senderListing| [senderListing.email, senderListing.sender_email_id]}, {:include_blank => 'Все отправители'}) %>
      </p>
   </div>
   
@@ -65,7 +64,9 @@
 		<tbody>
 			<tr>
 				<td colspan="10">
-					Соответвующие вашему запросу документы отсутсвуют
+					<div style="padding:10px;background:#ccc;text-align:center;">
+						Соответвующие вашему запросу документы отсутсвуют
+					</div>
 				</td>
 			</tr>
 		</tbody>

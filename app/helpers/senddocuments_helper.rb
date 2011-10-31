@@ -33,13 +33,13 @@ module SenddocumentsHelper
     
     regex = /\d{2}\.\d{2}\.\d{4}/
 
-    if !documentfilter.nil? && (!documentfilter['by_date_start'].nil? && documentfilter['by_date_start'] != '' && documentfilter['by_date_start'] !~ regex)
+    if !documentfilter.nil? && (!documentfilter['by_date_start'].nil? && documentfilter['by_date_start'] != '' && documentfilter['by_date_start'] =~ regex)
       @by_date_start = documentfilter['by_date_start']
-    else 
-        @by_date_start = ''
+    else
+        @by_date_start = '01.01.2001'
     end
     
-    if !documentfilter.nil? && (!documentfilter['by_date_finish'].nil? && documentfilter['by_date_finish'] != '' && documentfilter['by_date_finish'] !~ regex)
+    if !documentfilter.nil? && (!documentfilter['by_date_finish'].nil? && documentfilter['by_date_finish'] != '' && documentfilter['by_date_finish'] =~ regex)
       @by_date_finish = documentfilter['by_date_finish']
     else 
         @by_date_finish = ''
