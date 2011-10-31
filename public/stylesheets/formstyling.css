@@ -9,13 +9,14 @@ div.formstyling {
 		  padding: 0;
 		  position: relative;
 	}
-	div.formstyling p span.label_span {
+	div.formstyling p span.label_span, div.formstyling div.fieldWithErrors label {
 		display:block;
 		float: left;
 		font-size: 11px;
 		line-height: 24px;
 		width: 170px;
 	}
+	
 	div.formstyling .required {
 		  font-weight: bold;
 	}
@@ -53,6 +54,7 @@ div.formstyling {
 	div.formstyling div.submit input {
 		  width: auto;
 	}
+	div.formstyling div.fieldWithErrors {float:left;}
 
 div.l-field, div.submit {
 	width:575px;
