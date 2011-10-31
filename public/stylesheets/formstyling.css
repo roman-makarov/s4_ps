@@ -58,7 +58,7 @@ div.formstyling {
 	div.formstyling div.submit input {
 		  width: auto;
 	}
-	div.formstyling div.fieldWithErrors {float:left;}
+	div.formstyling div.fieldWithErrors {float:left;margin-bottom:8px;}
 
 div.l-field, div.submit {
 	width:575px;
