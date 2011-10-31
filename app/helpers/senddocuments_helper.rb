@@ -69,8 +69,8 @@ module SenddocumentsHelper
       'end_date' => @by_date_finish,
       'sended_form_kind' => '5',
       'sended_form_type' => @by_type,
-      'sender' => @document_name,
-      'name' => @by_sender
+      'sender' => @by_sender,
+      'name' => @document_name
     }
     
     return @doc_params.delete_if {|key, value| value == "" }

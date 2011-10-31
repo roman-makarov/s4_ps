@@ -1,6 +1,7 @@
 div.field-i {
 	overflow:hidden;
 	padding-bottom:10px;
+	clear:left;
 }
 
 .authority_header {
