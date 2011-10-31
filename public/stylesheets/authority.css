@@ -1,4 +1,4 @@
-div.field-i {
+/*div.field-i {
 	overflow:hidden;
 	padding-bottom:10px;
 	clear:left;
@@ -12,8 +12,8 @@ div.field-i {
 .authority,
 .authority div,
 .authority form {
-    /*float: left;
-    font: normal normal normal 12px/16px arial, sans-serif; */
+    float: left;
+    font: normal normal normal 12px/16px arial, sans-serif;
 }
 
 
@@ -47,7 +47,9 @@ div.field-i {
     width: auto;
     margin-top: 10px;
 }
+*/
 
+.senddocument, .senddocument div, .senddocument form {float:none;}
 .errorExplanation h2,
 .errorExplanation ul li {
     color: red;
@@ -68,4 +70,64 @@ label.required {
     border-top: 1px solid #DDD;
     color: #999;
     padding-left: 10px;
+}
+
+div.senddocument {
+		  margin: 10px 0;
+		  padding: 0;
+	}
+	div.senddocument p {
+		  height: auto !important;
+		  margin: 10px 0;
+		  /* overflow: hidden; */
+		  padding: 0;
+		  position: relative;
+	}
+	div.senddocument p span.label_span {
+		display:block;
+		float: left;
+		font-size: 11px;
+		line-height: 24px;
+		width: 170px;
+	}
+	div.senddocument .required {
+		  font-weight: normal;
+	}
+	div.senddocument .star {
+		  color: #FF0000;
+		  position: absolute;
+		  top: 5px;
+			right: -5px;
+	}
+	div.senddocument input, div.senddocument select, div.senddocument textarea {
+		  font-family: 'lucida grande',arial,sans-serif;
+		  font-size: 13px;
+		  margin: 3px;
+		  position: relative;
+	}
+	div.senddocument input {
+		  width: 390px;
+	}
+	div.senddocument select {
+		width: 396px;
+	}
+	div.senddocument p.date_fields input {
+		width:173px;	
+	}
+	div.senddocument input#feedback_occupation {
+		  width: 150px;
+	}
+	div.senddocument textarea {
+		  height: 10em;
+		  width: 390px;
+	}
+	div.senddocument div.submit {
+			clear:both;
+	}
+	div.senddocument div.submit input {
+		  width: auto;
+	}
+
+div.l-field, div.submit {
+	width:575px;
 }
