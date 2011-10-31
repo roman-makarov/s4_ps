@@ -16,7 +16,7 @@
 </script>
 
 <div id="form_finder_document" class="formstyling" style="margin:0 0 20px 0;">
-<% form_for @documentfilter, :method => "get", :url => { :action => "list"}, :html => { :method => "get" } do |f| %>
+<% form_for @documentfilter, :as => :client, :url => { :action => "list"}, :html => { :method => "get" } do |f| %>
   <div class="date">
     <p class="date_fields">
       <span class="label_span"><label >По дате:</label></span>
