@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :reports
   
+  # 
   map.resources :senddocuments, :collection => {
     :list => :get,
     :message => :get,
