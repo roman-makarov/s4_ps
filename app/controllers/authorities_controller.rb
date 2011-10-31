@@ -14,6 +14,7 @@ class AuthoritiesController < ApplicationController
     @warrant_agents = S4::WarrantAgent.all(s4_user)
   end
   
+  #
   def create
     authority = params[:authority]
     @authority = Authority.new(authority)
