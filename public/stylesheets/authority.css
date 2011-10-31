@@ -12,11 +12,12 @@ div.field-i {
 .authority,
 .authority div,
 .authority form {
-    //float: left;
-    //font: normal normal normal 12px/16px arial, sans-serif;
+    /*float: left;
+    font: normal normal normal 12px/16px arial, sans-serif; */
 }
 
-.authority_label {
+
+.senddocument_label, .authority_label {
 	clear:left;
     width: 165px;
     text-align: left;
@@ -27,7 +28,7 @@ div.field-i {
     float:left;
 }
 
-.authority_field {
+.senddocument_field, .authority_field {
     width: 400px;
     float:left;
 }
