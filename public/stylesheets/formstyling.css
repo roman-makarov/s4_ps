@@ -12,7 +12,7 @@ div.formstyling {
 		  padding: 0;
 		  position: relative;
 	}
-	div.formstyling p span.label_span, div.formstyling div.fieldWithErrors label {
+	div.formstyling p span.label_span, div.formstyling div.fieldWithErrors label, div.formstyling div.fieldWithErrors {
 		display:block;
 		float: left;
 		font-size: 11px;
@@ -25,9 +25,10 @@ div.formstyling {
 	}
 	div.formstyling .star {
 		  color: #FF0000;
-		  position: absolute;
-		  top: 5px;
-			right: -5px;
+		  float:right;
+		  height:1px;
+		  width:1px;
+		  margin-top:5px;
 	}
 	div.formstyling input, div.formstyling select, div.formstyling textarea {
 		  font-family: 'lucida grande',arial,sans-serif;
@@ -61,4 +62,5 @@ div.formstyling {
 
 div.l-field, div.submit {
 	width:575px;
+	clear:both;
 }
