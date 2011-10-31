@@ -17,7 +17,7 @@ div.formstyling {
 		width: 170px;
 	}
 	div.formstyling .required {
-		  font-weight: normal;
+		  font-weight: bold;
 	}
 	div.formstyling .star {
 		  color: #FF0000;

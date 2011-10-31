@@ -13,7 +13,7 @@
 	<div class="l-field">
 		<p>
 			<span class="label_span">
-				<%= f.label :theme, t(:theme, :scope => [:shared, :message, :columns]) %>
+				<%= f.label :theme, t(:theme, :scope => [:shared, :message, :columns] ), :class => "required" %>
 			</span>
         	<%= f.text_field :theme %>
         	<span class="star">*</span>
@@ -21,7 +21,7 @@
 	</div>
 	<div class="l-field">
 		<p>
-			<span class="label_span"><%= f.label :text, t(:text, :scope => [:shared, :message, :columns]) %></span>
+			<span class="label_span"><%= f.label :text, t(:text, :scope => [:shared, :message, :columns]), :class => "required" %></span>
         	<%= f.text_area :text, :cols => 10, :rows => 10 %>
         	<span class="star">*</span></div>
 		</p>
