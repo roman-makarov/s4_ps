@@ -12,6 +12,7 @@ log/development.log
 *.cache
 *.log
 *.pid
+<<<<<<< HEAD
 config/*.sphinx.conf
 tmp/**/*
 db/cstore/**
@@ -24,3 +25,7 @@ coverage/*
 db/*.sqlite3
 *.tmproj
 *.sw?
+=======
+
+public/uploads
+>>>>>>> 4bca84859e79102766363b2ce4ba63e943c0b399
