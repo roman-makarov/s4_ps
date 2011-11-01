@@ -35,6 +35,7 @@ class SenddocumentsController < ApplicationController
     senddocument = params[:senddocument]
     @senddocument = Senddocument.new(senddocument)
     if @senddocument.valid?
+      headers['Cache-Control'] = 'no-cache'
       send_document(senddocument)
       session['complete_message'] = t(:complete_message, :scope => [:shared, :senddocument])
     else
