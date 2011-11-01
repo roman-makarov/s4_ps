@@ -6,6 +6,7 @@ gem "mysql"
 gem "nokogiri"
 gem "RedCloth"
 gem "warden"
+gem "rchardet"
 
 gem "recaptcha", :require => "recaptcha/rails"
 
