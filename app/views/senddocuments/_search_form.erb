@@ -9,18 +9,21 @@
         <%= f.text_field :by_date_finish %>
     </p>
   </div>
+  
   <div>
 	<p>
 	    <span class="label_span"><%= f.label :by_type, t(:type_label, :scope => [:shared, :documentfilter, :columns]) %></span>
 	    <%= f.select(:by_type,@typesListing.collect {|typesListing| [typesListing.name, typesListing.id]}, {:include_blank => 'Все типы'}) %>
 	</p>
   </div>
+  
   <div>
       <p>
         <span class="label_span"><%= f.label :document_name, t(:document_name, :scope => [:shared, :documentfilter, :columns]) %></span>
         <%= f.text_field :document_name %>
       </p>
   </div>
+  
   <div>
      <p>
        <span class="label_span"><%= f.label :by_sender, t(:by_sender, :scope => [:shared, :documentfilter, :columns]) %></span>
@@ -31,8 +34,8 @@
   <div class="submit">
     <p>
       <span class="label_span"><label>&nbsp;</label></span>
-      <input type="reset" onclick="do_reset();return false;"  id="input_for_resetForm" name="reset_form" value="Очистить" />
       <%= f.submit t(:create_button, :scope => [:shared, :documentfilter]) %>
+      <input type="reset" onclick="do_reset();return false;"  id="input_for_resetForm" name="reset_form" value="Очистить" />
     </p>
   </div>
 <% end %>
