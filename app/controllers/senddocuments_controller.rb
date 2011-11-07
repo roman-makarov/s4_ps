@@ -5,15 +5,20 @@ class SenddocumentsController < ApplicationController
   
   def message
     messageForm_params = params[:messageform]
-    @messageform = Messageform.new( messageForm_params )
     
-    if @messageform.valid?
-      headers['Cache-Control'] = 'no-cache'
-      send_message(messageForm_params)
-      @complete_message = t(:complete_message, :scope => [:shared, :sendmessages])
-      @messageform = Messageform.new
+    if !messageForm_params.nil?
+      @messageform = Messageform.new( messageForm_params )
+      
+      if @messageform.valid?
+        headers['Cache-Control'] = 'no-cache'
+        send_message(messageForm_params)
+        @complete_message = t(:complete_message, :scope => [:shared, :sendmessages])
+        @messageform = Messageform.new
+      else
+        @messageform = @messageform
+      end
     else
-      @messageform = @messageform
+      @messageform = Messageform.new
     end
   end
   
