@@ -133,7 +133,7 @@ module ApplicationHelper
         when "url"
           link_to h(value), value.start_with?("http://") ? value : "http://#{value}"
         else
-          "-"
+          ""
       end
     end
   end

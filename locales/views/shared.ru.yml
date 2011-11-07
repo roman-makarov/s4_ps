@@ -40,5 +40,5 @@ ru:
 
   table_listing:
     cell:
-      blank: '-'
+      blank: ''
 
