@@ -4,7 +4,6 @@
 </h1>
 <%= contextual_menu %>
 
-
 <div class="resource">
   <ul>
 	<% @documentList.each do |column| %>
@@ -14,7 +13,7 @@
 				<div class="category">(<%=column["personal_manager_category"]%>)</div>
 				<div class="manager_id"><%=column["id"]%></div>
 				<div class="photo_base64">
-				  <img src="<%=column['photo_base64']%>" alt="" >
+				  <img src="<%=column['photo_base64']%>" width="150" height="150" alt="" >
 				</div>
 		  </li>
 		<% end %>
