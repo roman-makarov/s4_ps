@@ -5,17 +5,23 @@
 <%= contextual_menu %>
 
 <div class="resource">
-  <ul>
+  <div class="clients_list">
 	<% @documentList.each do |column| %>
-		  <li class='<%= cycle ('odd', 'even') %>' >
-		    <div class="photo_file_name"><%=column["photo_file_name"]%></div>
-				<h2 class="name"><%=column["employee_id"]%></h2>
-				<div class="category">(<%=column["personal_manager_category"]%>)</div>
-				<div class="manager_id"><%=column["id"]%></div>
-				<div class="photo_base64">
-				  <img src="<%=column['photo_base64']%>" width="150" height="150" alt="" >
+		  <ins class='<%= cycle ('odd', 'even') %>' >
+		    <div class="man">
+		      <div class="photos">
+		        <div class="photo_file_name"><%=column["photo_file_name"]%></div>
+				    <div class="manager_id"><%=column["id"]%></div>
+				    <div class="photo_base64">
+				      <img src="<%=column['photo_base64']%>" alt="" >
+				    </div>
+				  </div>
+				  <div class="namus">
+				    <h4 class="name"><%=column["employee_id"]%></h4>
+				    <div class="category">(<%=column["personal_manager_category"]%>)</div>
+				  </div>
 				</div>
-		  </li>
+		  </ins>
 		<% end %>
-	</ul>
+	</div>
 </div>

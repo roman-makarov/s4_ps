@@ -24,8 +24,8 @@ class OrganizationsController < ApplicationController
 		@documentList = S4.connection.call("s4.getResource", @sessionId, 'personal_manager', s4_user)
     @documentList = S4::Resource.parse_many(@documentList)
 
-		@personal_managers = S4::PersonalManager.all_with_scope(s4_user)
-		@pm_attr = @personal_managers.find('attributes')
+		#@personal_managers = S4::PersonalManager.all_with_scope(s4_user)
+		#@pm_attr = @personal_managers.find('attributes')
 	
 	
 	  @documentList.each do |column|
