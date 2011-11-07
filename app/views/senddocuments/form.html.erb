@@ -8,6 +8,7 @@
 <h2 style="color: green;"><%= @complete_message %></h2>
 
 <%= error_messages_for :senddocument %>
+
 <div class="senddocument formstyling">
 <% form_for @senddocument, :html => { :multipart => true } do |f| %>
 	<div class="l-field">

@@ -28,7 +28,7 @@ class OrganizationsController < ApplicationController
 		@pm_attr = @personal_managers.find('attributes')
 	
 	
-	  @documentList.each do |column| 
+	  @documentList.each do |column|
 	    if ['photo_base64'] == ""
 	      column["photo_base64"] = '/images/manager_photos/nophoto.png'
 		  else
