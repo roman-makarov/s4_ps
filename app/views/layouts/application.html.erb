@@ -9,6 +9,10 @@
         <title>
             <%= [t(".title"), s4_user ? t("title", :scope => [params[:controller]]) : nil].compact.join(" :: ") %>
         </title>
+        <style>
+          #header {float:none;}
+          #footer {height:auto;}
+        </style>
 		<%= render "shared/ga" %>
     </head>
     <body>
