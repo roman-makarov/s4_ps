@@ -37,3 +37,8 @@ ru:
         value:
           string:
             blank: 'Отсутствует'
+
+  table_listing:
+    cell:
+      blank: '-'
+
