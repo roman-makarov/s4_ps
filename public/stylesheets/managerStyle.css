@@ -9,6 +9,7 @@ div.clients_list {}
    text-align: left;
    margin: 0 10px 10px 0;
    height:220px;
+   width:225px;
    text-align:center;
   }
     div.photos {height:150px;}
