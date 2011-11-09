@@ -10,7 +10,7 @@ function do_reset()
 document.getElementById("documentfilter_document_name").disabled=true;
 
 document.getElementById('documentfilter_by_type').onchange = function() {
-    if ( document.getElementById("documentfilter_by_type").value )
+    if ( document.getElementById("documentfilter_by_type").value == 13 )
     {
       document.getElementById("documentfilter_document_name").disabled=false;
     }
