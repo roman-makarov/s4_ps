@@ -18,7 +18,8 @@ ActionController::Routing::Routes.draw do |map|
     :list => :get,
     :message => :get,
     :form => :get,
-    :warrant => :get
+    :warrant => :get,
+    :list_filter => :post
   }
   map.resources :authorities
   

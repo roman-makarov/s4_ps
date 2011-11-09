@@ -1,5 +1,5 @@
 <div id="form_finder_document" class="formstyling" style="margin:0 0 20px 0;">
-<% form_for @documentfilter, :url => { :action => "list"}, :html => { :method => "get" } do |f| %>
+<% form_for @documentfilter, :url => { :action => "list_filter"}, :html => { :method => "post" } do |f| %>
   <div class="date">
     <p class="date_fields">
       <span class="label_span"><label >По дате:</label></span>
