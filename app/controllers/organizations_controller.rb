@@ -44,7 +44,7 @@ class OrganizationsController < ApplicationController
 		         
 		    
 		    base_64_encoded_data2 = column["photo_base64"].gsub("<br/>","")
-	      File.open('public/upload/managerId_' + column["id"] + '.jpg', 'wb') do|f|
+	      File.open('public/upload/managerId_' + column["id"] + '.' + fileExist, 'wb') do|f|
 			    f.write(Base64.decode64(base_64_encoded_data2))
 		    end
 		    column["photo_base64"] = '/upload/managerId_' + column["id"] + '.' + fileExist
