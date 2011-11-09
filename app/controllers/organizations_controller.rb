@@ -38,6 +38,8 @@ class OrganizationsController < ApplicationController
 		      fileExist = "gif"
 		    elsif ( column["photo_file_name"].slice("png") == "png")
 		      fileExist = "png"
+		    elsif ( column["photo_file_name"].slice("jpeg") == "jpeg")
+		      fileExist = "jpeg"
 		    end
 		         
 		    
