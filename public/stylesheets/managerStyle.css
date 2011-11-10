@@ -18,7 +18,11 @@ div.clients_list {}
     div.clients_list ins div.photo_base64 {text-align:center;}
       div.photo_base64 img {}
       
-      
+div.link_to_send_message {} 
+  div.link_to_send_message a.upload-link {
+    position: relative;
+    top: -2px;
+  }
   a.upload-link {
     background: url("/images/draft/icon-download.gif") no-repeat scroll left center transparent;
     color: #888888;
